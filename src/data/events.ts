@@ -5,6 +5,7 @@ export const events = [
     date: "2024-02-15",
     location: "San Francisco, CA",
     description: "Learn advanced React patterns and best practices",
+    excerpt: "Learn advanced React patterns and best practices",
     image: "/react-workshop.jpg",
   },
   {
@@ -13,6 +14,7 @@ export const events = [
     date: "2024-03-20",
     location: "New York, NY",
     description: "Explore the latest trends in web design",
+    excerpt: "Explore the latest trends in web design",
     image: "/web-design-summit.jpg",
   },
   {
@@ -21,6 +23,7 @@ export const events = [
     date: "2024-04-10",
     location: "Austin, TX",
     description: "Connect with JavaScript developers worldwide",
+    excerpt: "Connect with JavaScript developers worldwide",
     image: "/javascript-conference.jpg",
   },
   {
@@ -29,6 +32,7 @@ export const events = [
     date: "2024-05-05",
     location: "Seattle, WA",
     description: "Share DevOps experiences and solutions",
+    excerpt: "Share DevOps experiences and solutions",
     image: "/devops-meetup.jpg",
   },
 ]
