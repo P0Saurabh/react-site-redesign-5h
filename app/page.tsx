@@ -1,7 +1,5 @@
 // Re-export from src for deployment validation
-const HomePage = () => {
-  // Component implementation here
-  return <div>Home Page</div>
-}
+import HomePage from "../src/pages/HomePage"
 
 export default HomePage
+export const Page = HomePage

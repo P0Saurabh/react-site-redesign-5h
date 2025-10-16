@@ -1,2 +1,2 @@
 // Re-export from src for deployment validation
-export { events } from "../../src/data/events"
+export { events } from "../src/data/events"
