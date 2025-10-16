@@ -1,4 +1,3 @@
-import { Container, Box, Typography, Grid, Card, CardContent, CardActions, Button } from "@mui/material"
 import Link from "next/link"
 import { events } from "@/data/events"
 import type { Metadata } from "next"
@@ -30,47 +29,43 @@ export default function EventsPage() {
 
   return (
     <main>
-      <Container maxWidth="lg">
-        <Box component="header" py={{ xs: 6, md: 10 }}>
-          <Typography component="h1" variant="h3" fontWeight={700} gutterBottom>
-            Events
-          </Typography>
-          <Typography variant="body1" color="text.secondary" maxWidth="md">
+      <div className="max-w-4xl mx-auto px-4">
+        <header className="py-12 md:py-20">
+          <h1 className="text-4xl font-bold mb-4">Events</h1>
+          <p className="text-lg text-gray-600 max-w-md">
             Join our upcoming public workshops and special events. Seats are limited—reserve your spot early.
-          </Typography>
-        </Box>
+          </p>
+        </header>
 
-        <Grid container spacing={3} component="section" aria-label="Upcoming events">
+        <section aria-label="Upcoming events" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {events?.map((ev) => (
-            <Grid key={ev.id} item xs={12} sm={6} md={4}>
-              <Card variant="outlined">
-                <CardContent>
-                  <Typography variant="overline" color="text.secondary">
-                    {ev.date} • {ev.location}
-                  </Typography>
-                  <Typography variant="h6" fontWeight={700} gutterBottom>
-                    {ev.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {ev.excerpt}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  {ev.href ? (
-                    <Button component={Link} href={ev.href} size="small" color="primary">
-                      View details
-                    </Button>
-                  ) : (
-                    <Button disabled size="small">
-                      Details soon
-                    </Button>
-                  )}
-                </CardActions>
-              </Card>
-            </Grid>
+            <div
+              key={ev.id}
+              className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+            >
+              <div className="p-6">
+                <p className="text-xs uppercase text-gray-500 mb-2">
+                  {ev.date} • {ev.location}
+                </p>
+                <h3 className="text-lg font-bold mb-3">{ev.title}</h3>
+                <p className="text-sm text-gray-600">{ev.excerpt}</p>
+              </div>
+              <div className="px-6 pb-6 pt-0">
+                {ev.href ? (
+                  <Link
+                    href={ev.href}
+                    className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    View details →
+                  </Link>
+                ) : (
+                  <span className="text-sm text-gray-400">Details soon</span>
+                )}
+              </div>
+            </div>
           ))}
-        </Grid>
-      </Container>
+        </section>
+      </div>
       <Script id="ld-breadcrumbs-events" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(breadcrumbList)}
       </Script>

@@ -4,15 +4,12 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-import { ThemeProvider } from "@mui/material/styles"
-import CssBaseline from "@mui/material/CssBaseline"
-import { theme } from "@/lib/mui-theme"
 import { Suspense } from "react"
 import { Header } from "@/components/Header/Header"
 import { Footer } from "@/components/Footer/Footer"
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter"
 import Script from "next/script"
 import { organizationJsonLd, websiteJsonLd } from "@/lib/schema"
+import { MuiProviders } from "@/components/MuiProviders"
 
 export const metadata: Metadata = {
   title: "Corporate Training Bangkok (CTB Thailand)",
@@ -43,23 +40,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
       <body className="font-sans">
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Suspense fallback={null}>
-              <Header />
-              {children}
-              <Footer />
-              <Analytics />
-              <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
-                {JSON.stringify(organizationJsonLd())}
-              </Script>
-              <Script id="ld-website" type="application/ld+json" strategy="afterInteractive">
-                {JSON.stringify(websiteJsonLd())}
-              </Script>
-            </Suspense>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <MuiProviders>
+          <Suspense fallback={null}>
+            <Header />
+            {children}
+            <Footer />
+            <Analytics />
+            <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
+              {JSON.stringify(organizationJsonLd())}
+            </Script>
+            <Script id="ld-website" type="application/ld+json" strategy="afterInteractive">
+              {JSON.stringify(websiteJsonLd())}
+            </Script>
+          </Suspense>
+        </MuiProviders>
       </body>
     </html>
   )
