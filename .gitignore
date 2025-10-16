@@ -2,13 +2,15 @@
 
 # dependencies
 /node_modules
+/.pnp
+.pnp.js
 
-# next.js
-/.next/
-/out/
+# vite
+/dist
+/build
 
 # production
-/build
+/out
 
 # debug
 npm-debug.log*
@@ -18,10 +20,21 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
