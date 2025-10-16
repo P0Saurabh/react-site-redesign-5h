@@ -1,0 +1,6 @@
+.git
+.gitignore
+node_modules
+pnpm-lock.yaml
+src/**/*.test.ts
+src/**/*.test.tsx
